@@ -1,4 +1,5 @@
 extends KinematicBody
+class_name ImpLaser
 
 ## Provided Signals
 #signal value_changed(new_value)
@@ -28,8 +29,8 @@ func _process(delta):
 	if collision_info:
 		if collision_info.collider and collision_info.collider.has_method("hit"):
 			collision_info.collider.hit()
-			print ("Rebel laser hit, hittable col: ", collision_info.collider)
+			print ("Imp laser hit, hittable col: ", collision_info.collider)
 		else:
-			print ("Rebel laser hit, non-hittable col: ", collision_info.collider)
+			print ("Imp laser hit, non-hittable col: ", collision_info.collider)
 
 ## Connected Signals

@@ -53,7 +53,7 @@ albedo_texture = ExtResource( 8 )
 
 [sub_resource type="Environment" id=7]
 background_mode = 1
-ambient_light_color = Color( 0.101961, 0.101961, 0.101961, 1 )
+ambient_light_color = Color( 0.0862745, 0.0431373, 0.0980392, 1 )
 glow_enabled = true
 
 [node name="SkyBox2" type="Spatial"]
@@ -70,10 +70,17 @@ material/3 = SubResource( 4 )
 material/4 = SubResource( 5 )
 material/5 = SubResource( 6 )
 
-[node name="DirectionalLight" type="DirectionalLight" parent="."]
-transform = Transform( 0.633183, -0.243198, 0.734802, 0.0248857, 0.95526, 0.294719, -0.773602, -0.168325, 0.610907, 0, 0, 0 )
+[node name="DirectionalLight2" type="DirectionalLight" parent="."]
+transform = Transform( 0.880328, 0.0141851, 0.474153, 0.00826911, 0.998942, -0.0452377, -0.474293, 0.0437449, 0.87928, 0, 0, 0 )
 light_color = Color( 1, 0.776471, 0.776471, 1 )
+light_energy = 0.75
+light_specular = 0.35
+
+[node name="DirectionalLight3" type="DirectionalLight" parent="."]
+transform = Transform( 0.361646, -0.454663, 0.813937, 0.09333, 0.886297, 0.453616, -0.927632, -0.0880836, 0.36296, 0, 0, 0 )
+light_color = Color( 1, 0.776471, 0.776471, 1 )
+light_energy = 0.75
+light_specular = 0.35
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 7 )
-

@@ -9,7 +9,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	transform.origin = Vector3(0,0,0)
+	transform.origin = Vector3(0,0,0) ## Combine this and the below line?
 	translate(camera.global_transform.origin)
 	transform.basis = Basis()
 	pass

@@ -1,4 +1,5 @@
 extends KinematicBody
+class_name RebelLaser
 
 ## Provided Signals
 #signal value_changed(new_value)

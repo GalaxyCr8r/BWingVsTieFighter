@@ -1,14 +1,15 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://ships/bwing/BWing.gd" type="Script" id=1]
-[ext_resource path="res://ships/bwing/bwingMaterial.tres" type="Material" id=2]
-[ext_resource path="res://ships/bwing/bwing_01.obj" type="ArrayMesh" id=3]
-[ext_resource path="res://ships/bwing/bwing_01_wing.obj" type="ArrayMesh" id=4]
-[ext_resource path="res://ships/bwing/bwing_01_wingLower.obj" type="ArrayMesh" id=5]
-[ext_resource path="res://ships/bwing/bwing_01_landingGear.obj" type="ArrayMesh" id=6]
-[ext_resource path="res://ships/bwing/bwing_01_landingMajorPad.obj" type="ArrayMesh" id=7]
-[ext_resource path="res://ships/bwing/bwing_01_landingMinorPad.obj" type="ArrayMesh" id=8]
-[ext_resource path="res://ships/bwing/Idle.tres" type="Animation" id=9]
+[ext_resource path="res://assets/RebelLaser.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ships/bwing/bwingMaterial.tres" type="Material" id=3]
+[ext_resource path="res://ships/bwing/bwing_01.obj" type="ArrayMesh" id=4]
+[ext_resource path="res://ships/bwing/bwing_01_wing.obj" type="ArrayMesh" id=5]
+[ext_resource path="res://ships/bwing/bwing_01_wingLower.obj" type="ArrayMesh" id=6]
+[ext_resource path="res://ships/bwing/bwing_01_landingGear.obj" type="ArrayMesh" id=7]
+[ext_resource path="res://ships/bwing/bwing_01_landingMajorPad.obj" type="ArrayMesh" id=8]
+[ext_resource path="res://ships/bwing/bwing_01_landingMinorPad.obj" type="ArrayMesh" id=9]
+[ext_resource path="res://ships/bwing/Idle.tres" type="Animation" id=10]
 
 [sub_resource type="Animation" id=1]
 resource_name = "CloseSFoils"
@@ -145,51 +146,62 @@ height = 0.111941
 transform = Transform( 1, -1.49974e-008, 1.18382e-008, 1.49974e-008, 1, -1.64114e-008, -1.18382e-008, 1.64114e-008, 1, 0, 0, 0 )
 collision_layer = 9
 script = ExtResource( 1 )
+hardPoints = [ NodePath("Spatial/Hull/hardpoint3"), NodePath("Spatial/Wing1/hardpoint1"), NodePath("Spatial/Wing2/hardpoint2") ]
+packedLaser = ExtResource( 2 )
 
 [node name="Spatial" type="Spatial" parent="."]
 transform = Transform( 0.25, -4.85704e-017, 0, -4.85704e-017, 0.25, 0, 0, 0, 0.25, 0, 0, 0 )
 
 [node name="Hull" type="MeshInstance" parent="Spatial"]
 transform = Transform( 1, -1.94282e-016, 0, -1.94282e-016, 1, 0, 0, 0, 1, 0, 0, 0 )
-material_override = ExtResource( 2 )
-mesh = ExtResource( 3 )
+material_override = ExtResource( 3 )
+mesh = ExtResource( 4 )
 material/0 = null
 material/1 = null
 material/2 = null
 
+[node name="hardpoint3" type="Position3D" parent="Spatial/Hull"]
+transform = Transform( 1, -1.94281e-016, 0, -1.94281e-016, 1, 0, 0, 0, 1, 0.309288, -6.00889e-017, 0 )
+
 [node name="Wing1" type="MeshInstance" parent="Spatial"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.85704e-018, 0.025, 0 )
-material_override = ExtResource( 2 )
-mesh = ExtResource( 4 )
-material/0 = null
-
-[node name="Wing2" type="MeshInstance" parent="Spatial"]
-transform = Transform( 1, -5.78308e-008, 1.55914e-008, 5.78308e-008, 1, -1.13462e-008, -1.55914e-008, 1.13462e-008, 1, 4.85704e-018, -0.025, 0 )
-material_override = ExtResource( 2 )
+material_override = ExtResource( 3 )
 mesh = ExtResource( 5 )
 material/0 = null
 
+[node name="hardpoint1" type="Position3D" parent="Spatial/Wing1"]
+transform = Transform( 1, -1.94281e-016, 0, -1.94281e-016, 1, 0, 0, 0, 1, 1.33016e-009, 0.138651, 0.0632902 )
+
+[node name="Wing2" type="MeshInstance" parent="Spatial"]
+transform = Transform( 1, -5.78308e-008, 1.55914e-008, 5.78308e-008, 1, -1.13462e-008, -1.55914e-008, 1.13462e-008, 1, 4.85704e-018, -0.025, 0 )
+material_override = ExtResource( 3 )
+mesh = ExtResource( 6 )
+material/0 = null
+
+[node name="hardpoint2" type="Position3D" parent="Spatial/Wing2"]
+transform = Transform( 1, 5.78308e-008, -1.55914e-008, -5.78308e-008, 1, 1.13462e-008, 1.55914e-008, -1.13462e-008, 1, 0.000270504, -0.139631, 0.0633104 )
+
 [node name="LandingGear" type="MeshInstance" parent="Spatial"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 0.207495, -0.00519639, 0.0195119 )
-material_override = ExtResource( 2 )
-mesh = ExtResource( 6 )
+material_override = ExtResource( 3 )
+mesh = ExtResource( 7 )
 material/0 = null
 
 [node name="LandingPadMajor" type="MeshInstance" parent="Spatial"]
 transform = Transform( 1, -1.94282e-016, 0, -1.94282e-016, 1, 0, 0, 0, 1, 0, 0.03, 0 )
-material_override = ExtResource( 2 )
-mesh = ExtResource( 7 )
+material_override = ExtResource( 3 )
+mesh = ExtResource( 8 )
 material/0 = null
 
 [node name="LandingPadMinor" type="MeshInstance" parent="Spatial"]
 transform = Transform( 1, -1.94282e-016, 0, -1.94282e-016, 1, 0, 0, 0, 1, 0.207, -0.0117123, -0.0225571 )
-material_override = ExtResource( 2 )
-mesh = ExtResource( 8 )
+material_override = ExtResource( 3 )
+mesh = ExtResource( 9 )
 material/0 = null
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/CloseSFoils = SubResource( 1 )
-anims/Idle = ExtResource( 9 )
+anims/Idle = ExtResource( 10 )
 anims/Landing = SubResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]

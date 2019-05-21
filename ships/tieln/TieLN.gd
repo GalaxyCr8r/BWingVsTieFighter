@@ -4,7 +4,8 @@ extends KinematicBody
 #signal value_changed(new_value)
 
 ## Exported vars
-#export var value : int = 0 setget set_value, get_value
+export(Array, NodePath) var hardPoints : Array
+export(PackedScene) var packedLaser : PackedScene
 
 ## Internal Vars
 #onready var  : =
@@ -17,15 +18,31 @@ var maxSpeed : float = currentSpeed
 var destroyed := false
 var destroyedCounter : float = 1.5
 
+export var shootInteval : float = 2
+var shootCounter : float = 2
+
 ## Methods
 func _ready():
 	randomize()
+
+func fire_all():
+	for hardPointPath in hardPoints:
+		var hardPoint : Position3D = get_node(hardPointPath)
+		var laser : RebelLaser = packedLaser.instance()
+		get_parent().add_child(laser)
+		laser.transform.origin = hardPoint.global_transform.origin
+		laser.transform.basis = self.transform.basis
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	self.rotate(transform.basis.z, PI * 0.005 * roll)
 	self.rotate(transform.basis.x, PI * 0.0075 * pitch)
 	self.move_and_collide(transform.basis.z * (currentSpeed * 0.01) * delta)
+	
+	shootCounter -= delta
+	if shootCounter < 0:
+		shootCounter = shootInteval
+		fire_all()
 	
 	if destroyed:
 		destroyedCounter -= delta

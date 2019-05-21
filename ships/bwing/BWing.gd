@@ -1,5 +1,15 @@
 extends KinematicBody
 
+## Provided Signals
+#signal value_changed(new_value)
+
+## Exported vars
+export(Array, NodePath) var hardPoints : Array
+export(PackedScene) var packedLaser : PackedScene
+
+## Internal Vars
+#onready var  : =
+
 var isPlayer = true
 
 var roll : float = 0
@@ -7,20 +17,31 @@ var pitch : float = 0
 var currentSpeed : float = 50
 var maxSpeed : float = 50
 
-# Called when the node enters the scene tree for the first time.
+## Methods
 func _ready():
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	self.rotate(transform.basis.z, PI * 0.005 * roll)
+	self.rotate(transform.basis.z, PI * 0.0025 * roll)
+	self.rotate(transform.basis.y, PI * -1 * 0.005 * roll)
 	self.rotate(transform.basis.x, PI * 0.0075 * pitch)
 	self.move_and_collide(transform.basis.z * (currentSpeed * 0.01) * delta)
-	
+
+func fire_all():
+	for hardPointPath in hardPoints:
+		var hardPoint : Position3D = get_node(hardPointPath)
+		var laser : RebelLaser = packedLaser.instance()
+		get_parent().add_child(laser)
+		laser.transform.origin = hardPoint.global_transform.origin
+		laser.transform.basis = self.transform.basis
 
 func _input(event):
 	if !isPlayer:
 		return
+	
+	if event.is_action_released("ui_accept"):
+		fire_all()
 	
 	if event.is_action_released("ui_left") or event.is_action_released("ui_right"):
 		roll = 0
@@ -48,3 +69,7 @@ func _input(event):
 		if !event.pressed:
 			roll = 0
 			pitch = 0
+
+## Connected Signals
+func hit():
+	print("BWing hit!!!")

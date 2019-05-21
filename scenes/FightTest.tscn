@@ -1,11 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://ships/bwing/BWing.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ships/victory/VictoryII.tscn" type="PackedScene" id=2]
 [ext_resource path="res://skybox/SkyBox2.tscn" type="PackedScene" id=3]
 [ext_resource path="res://ships/tieln/TieLN.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/RebelLaser.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/ImpLaser.tscn" type="PackedScene" id=6]
 
 [node name="FightTest" type="Spatial"]
 
@@ -33,12 +31,3 @@ transform = Transform( -1, 0, -1.50996e-007, 0, 1, 0, 1.50996e-007, 0, -1, 0.173
 
 [node name="TIE3" parent="." instance=ExtResource( 4 )]
 transform = Transform( -1, 0, -1.50996e-007, 0, 1, 0, 1.50996e-007, 0, -1, -0.180585, 0.140566, 3.33249 )
-
-[node name="RebelLaser" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.025, -1.258 )
-
-[node name="RebelLaser2" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025, -1.25 )
-
-[node name="ImpLaser" parent="." instance=ExtResource( 6 )]
-transform = Transform( -1, 0, -8.74228e-008, 0, 1, 0, 8.74228e-008, 0, -1, 1.51816e-008, 0, 2.93292 )
