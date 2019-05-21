@@ -4,18 +4,32 @@ extends KinematicBody
 #signal value_changed(new_value)
 
 ## Exported vars
-export var speed : float = 250 #setget set_value, get_value
+export var speed : float = 250
+export var lifetime : float = 10
 
 ## Internal Vars
 #onready var  : =
 
+var hit := false
+
 ## Methods
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if hit:
+		return
+	
+	lifetime -= delta
+	if lifetime < 0:
+		hit = true
+		queue_free()
+		return
+	
 	var collision_info = move_and_collide(transform.basis.z * (speed * 0.01) * delta)
 	if collision_info:
-		var collision_point = collision_info.position
-		print ("Rebel laser hit, ", collision_point)
-		queue_free()
+		if collision_info.collider and collision_info.collider.has_method("hit"):
+			collision_info.collider.hit()
+			print ("Rebel laser hit, hittable col: ", collision_info.collider)
+		else:
+			print ("Rebel laser hit, non-hittable col: ", collision_info.collider)
 
 ## Connected Signals

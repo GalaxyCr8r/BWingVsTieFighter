@@ -19,6 +19,11 @@ config/name="BWing vs. TIE Fighter"
 run/main_scene="res://scenes/FightTest.tscn"
 config/icon="res://icon.png"
 
+[display]
+
+window/size/width=1600
+window/size/height=900
+
 [input_devices]
 
 pointing/emulate_touch_from_mouse=true
