@@ -15,7 +15,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="3DTestStuff"
+config/name="BWing vs. TIE Fighter"
 run/main_scene="res://scenes/FightTest.tscn"
 config/icon="res://icon.png"
 
