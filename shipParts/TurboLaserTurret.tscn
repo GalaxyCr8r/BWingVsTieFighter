@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=2]
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_color = Color( 0.356863, 0.356863, 0.356863, 1 )
+
+[sub_resource type="CylinderMesh" id=1]
+material = SubResource( 4 )
+top_radius = 0.4
+height = 0.25
+radial_segments = 8
+rings = 1
+
+[sub_resource type="PrismMesh" id=2]
+left_to_right = 0.7
+size = Vector3( 0.8, 0.3, 0.6 )
+
+[sub_resource type="SpatialMaterial" id=5]
+albedo_color = Color( 0.623529, 0.623529, 0.623529, 1 )
+
+[sub_resource type="CylinderMesh" id=3]
+top_radius = 0.05
+bottom_radius = 0.075
+height = 0.8
+radial_segments = 5
+rings = 2
+
+[sub_resource type="SpatialMaterial" id=6]
+albedo_color = Color( 0.12549, 0.12549, 0.12549, 1 )
+
+[node name="TurretBase" type="MeshInstance"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0623901, 0 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="TurretRotationPos" type="Position3D" parent="."]
+
+[node name="TurretHead" type="MeshInstance" parent="TurretRotationPos"]
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, 0, 0.284313, 0 )
+mesh = SubResource( 2 )
+material/0 = SubResource( 5 )
+
+[node name="BarrelHingePos" type="Position3D" parent="TurretRotationPos"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 0, 0.29571, -0.106459 )
+
+[node name="Barrel1" type="MeshInstance" parent="TurretRotationPos/BarrelHingePos"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.497, 0 )
+mesh = SubResource( 3 )
+material/0 = SubResource( 6 )
+
+[node name="Barrel2" type="MeshInstance" parent="TurretRotationPos/BarrelHingePos"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.125, 0.497, 0 )
+mesh = SubResource( 3 )
+material/0 = SubResource( 6 )
+

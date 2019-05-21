@@ -1,0 +1,62 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://ships/tieln/TieLN.gd" type="Script" id=1]
+[ext_resource path="res://ships/tieln/tieFighter.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://ships/transparent_material.tres" type="Material" id=3]
+[ext_resource path="res://ships/tieln/tieLnSide.tres" type="Material" id=4]
+[ext_resource path="res://ships/tieln/tieLnBack.tres" type="Material" id=5]
+[ext_resource path="res://ships/tieln/tieLnFront.tres" type="Material" id=6]
+[ext_resource path="res://ships/tieln/engineMaterial.tres" type="Material" id=7]
+
+[sub_resource type="PlaneMesh" id=1]
+material = ExtResource( 7 )
+size = Vector2( 0.1, 0.1 )
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 0.01, 0.0708566, 0.0629439 )
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 0.04, 0.02, 0.02 )
+
+[node name="TIE" type="KinematicBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00158226, 0, 0.00214267 )
+collision_layer = 5
+script = ExtResource( 1 )
+
+[node name="Mesh" type="MeshInstance" parent="."]
+transform = Transform( 0.075, 0, 0, 0, 0.075, 0, 0, 0, 0.075, -0.00106406, 0.0039537, 0.00395322 )
+mesh = ExtResource( 2 )
+material/0 = ExtResource( 3 )
+material/1 = ExtResource( 4 )
+material/2 = ExtResource( 3 )
+material/3 = ExtResource( 5 )
+material/4 = ExtResource( 3 )
+material/5 = ExtResource( 4 )
+material/6 = ExtResource( 3 )
+material/7 = ExtResource( 4 )
+material/8 = ExtResource( 3 )
+material/9 = ExtResource( 6 )
+material/10 = ExtResource( 3 )
+material/11 = ExtResource( 4 )
+
+[node name="Engine1" type="MeshInstance" parent="Mesh"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-008, 1, 0, -1, -4.37114e-008, 0.225, 0, -0.025 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="Engine2" type="MeshInstance" parent="Mesh"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-008, 1, 0, -1, -4.37114e-008, -0.225, 0, -0.025 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="Collision_Wing" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05, 0.00461607, 0.00461607 )
+shape = SubResource( 2 )
+
+[node name="Collision_Body" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00439311, 0 )
+shape = SubResource( 3 )
+
+[node name="Collision_Wing2" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, 0.00461607, 0.00461607 )
+shape = SubResource( 2 )

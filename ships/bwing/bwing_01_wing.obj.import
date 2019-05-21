@@ -1,0 +1,18 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/bwing_01_wing.obj-5fabbd4ce9d7d17f0ef84e5975a2fddc.mesh"
+
+[deps]
+
+files=[ "res://.import/bwing_01_wing.obj-5fabbd4ce9d7d17f0ef84e5975a2fddc.mesh" ]
+
+source_file="res://ships/bwing/bwing_01_wing.obj"
+dest_files=[ "res://.import/bwing_01_wing.obj-5fabbd4ce9d7d17f0ef84e5975a2fddc.mesh", "res://.import/bwing_01_wing.obj-5fabbd4ce9d7d17f0ef84e5975a2fddc.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+optimize_mesh=true

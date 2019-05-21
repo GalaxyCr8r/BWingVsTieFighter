@@ -1,0 +1,23 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://skybox/Skybox.tscn" type="PackedScene" id=1]
+[ext_resource path="res://skybox/wwwtyro/front.png" type="Texture" id=2]
+[ext_resource path="res://skybox/wwwtyro/back.png" type="Texture" id=3]
+[ext_resource path="res://skybox/wwwtyro/bottom.png" type="Texture" id=4]
+[ext_resource path="res://skybox/wwwtyro/top.png" type="Texture" id=5]
+[ext_resource path="res://skybox/wwwtyro/right.png" type="Texture" id=6]
+[ext_resource path="res://skybox/wwwtyro/left.png" type="Texture" id=7]
+
+[node name="Skybox test" type="Spatial"]
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.633606, 2.75304 )
+
+[node name="Skybox" parent="." instance=ExtResource( 1 )]
+TextureFront = ExtResource( 2 )
+TextureBack = ExtResource( 3 )
+TextureBottom = ExtResource( 4 )
+TextureUp = ExtResource( 5 )
+TextureLeft = ExtResource( 6 )
+TextureRight = ExtResource( 7 )
+

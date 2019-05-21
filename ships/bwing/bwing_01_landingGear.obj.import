@@ -1,0 +1,18 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/bwing_01_landingGear.obj-62b0c869c0800985dc5a3cfe94cf522b.mesh"
+
+[deps]
+
+files=[ "res://.import/bwing_01_landingGear.obj-62b0c869c0800985dc5a3cfe94cf522b.mesh" ]
+
+source_file="res://ships/bwing/bwing_01_landingGear.obj"
+dest_files=[ "res://.import/bwing_01_landingGear.obj-62b0c869c0800985dc5a3cfe94cf522b.mesh", "res://.import/bwing_01_landingGear.obj-62b0c869c0800985dc5a3cfe94cf522b.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+optimize_mesh=true

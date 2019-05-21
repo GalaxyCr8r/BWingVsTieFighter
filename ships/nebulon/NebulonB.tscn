@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://ships/nebulon/herc2_uvmap.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://ships/nebulon/nebBody.tres" type="Material" id=2]
+[ext_resource path="res://ships/nebulon/nebulon.tres" type="Material" id=3]
+[ext_resource path="res://shipParts/TurboLaserTurret.tscn" type="PackedScene" id=4]
+
+[sub_resource type="CapsuleShape" id=1]
+height = 5.0
+
+[node name="NebulonB" type="KinematicBody"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 5, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0 )
+mesh = ExtResource( 1 )
+material/0 = ExtResource( 2 )
+material/1 = ExtResource( 3 )
+material/2 = ExtResource( 3 )
+material/3 = ExtResource( 3 )
+material/4 = ExtResource( 3 )
+
+[node name="Hanger" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.630477, 1.46395, 2.80647 )
+
+[node name="TurretBank1" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.76837e-007, 2.86255, 5.37647 )
+
+[node name="TurretBase" parent="TurretBank1" instance=ExtResource( 4 )]
+transform = Transform( 0.573576, 0.819152, 0, -0.819152, 0.573576, 0, 0, 0, 1, 0.9, 0.0380001, 0 )
+
+[node name="TurretBase2" parent="TurretBank1" instance=ExtResource( 4 )]
+transform = Transform( 0.573576, -0.819152, 0, 0.819152, 0.573576, 0, 0, 0, 1, -0.9, 0.038, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.88964, -0.225055 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.160884, 0.986973, 0, -0.986973, 0.160884, 1.19209e-006, -1.30436, 4.8451 )
+shape = SubResource( 1 )
+
