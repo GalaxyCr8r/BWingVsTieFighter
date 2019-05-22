@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://skybox/pink/pano.png" type="Texture" id=1]
+
+[sub_resource type="PanoramaSky" id=1]
+radiance_size = 5
+panorama = ExtResource( 1 )
+
+[sub_resource type="Environment" id=2]
+background_mode = 2
+background_sky = SubResource( 1 )
+
+[node name="Skybox4" type="WorldEnvironment"]
+environment = SubResource( 2 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( -0.66437, 0.195856, -0.721285, 0.0173397, 0.968834, 0.247104, 0.747202, 0.151662, -0.647061, 0, 0, 0 )
+light_color = Color( 1, 0.662745, 0.662745, 1 )
+light_energy = 0.75

@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://skybox/SkyBox2.gd" type="Script" id=1]
+[ext_resource path="res://skybox/pink/pano.png" type="Texture" id=2]
+
+[sub_resource type="PanoramaSky" id=8]
+panorama = ExtResource( 2 )
+
+[sub_resource type="Environment" id=7]
+background_mode = 2
+background_sky = SubResource( 8 )
+ambient_light_color = Color( 0.160784, 0.0862745, 0.184314, 1 )
+glow_enabled = true
+
+[node name="SkyBox2" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="DirectionalLight2" type="DirectionalLight" parent="."]
+transform = Transform( 0.880328, -0.0603452, 0.470511, 0.00826911, 0.993677, 0.111972, -0.474293, -0.0946814, 0.875261, 0, 0, 0 )
+light_color = Color( 1, 0.776471, 0.776471, 1 )
+light_energy = 0.75
+light_specular = 0.35
+
+[node name="DirectionalLight3" type="DirectionalLight" parent="."]
+transform = Transform( 0.462187, 0.471998, 0.750733, 0.00685676, 0.844654, -0.535269, -0.886756, 0.252542, 0.387152, 0, 0, 0 )
+light_color = Color( 1, 0.776471, 0.776471, 1 )
+light_energy = 0.75
+light_specular = 0.35
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 7 )

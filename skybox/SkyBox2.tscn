@@ -53,7 +53,7 @@ albedo_texture = ExtResource( 8 )
 
 [sub_resource type="Environment" id=7]
 background_mode = 1
-ambient_light_color = Color( 0.0862745, 0.0431373, 0.0980392, 1 )
+ambient_light_color = Color( 0.160784, 0.0862745, 0.184314, 1 )
 glow_enabled = true
 
 [node name="SkyBox2" type="Spatial"]
