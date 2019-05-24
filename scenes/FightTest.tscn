@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://ships/bwing/BWing.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ships/victory/VictoryII.tscn" type="PackedScene" id=2]
@@ -7,46 +7,48 @@
 [ext_resource path="res://textures/Terraformed Mars 2229_DizzyCrow.jpg" type="Texture" id=5]
 [ext_resource path="res://textures/star02.png" type="Texture" id=6]
 
-[sub_resource type="SpatialMaterial" id=10]
+[sub_resource type="SpatialMaterial" id=1]
 params_diffuse_mode = 1
 params_specular_mode = 2
 albedo_texture = ExtResource( 5 )
 
-[sub_resource type="SphereMesh" id=9]
-material = SubResource( 10 )
+[sub_resource type="SphereMesh" id=2]
+material = SubResource( 1 )
 radius = 105.0
 height = 210.0
 
-[sub_resource type="VisualShaderNodeScalarOp" id=19]
+[sub_resource type="VisualShaderNodeScalarOp" id=3]
 default_input_values = [ 0, 0.0, 1, 0.5 ]
 operator = 2
 
-[sub_resource type="VisualShaderNodeInput" id=20]
+[sub_resource type="VisualShaderNodeInput" id=4]
 
-[sub_resource type="VisualShaderNodeInput" id=15]
+[sub_resource type="VisualShaderNodeInput" id=5]
 input_name = "normal"
 
-[sub_resource type="VisualShaderNodeInput" id=16]
+[sub_resource type="VisualShaderNodeInput" id=6]
 input_name = "view"
 
-[sub_resource type="VisualShaderNodeColorConstant" id=17]
+[sub_resource type="VisualShaderNodeColorConstant" id=7]
 constant = Color( 0.745098, 0.854902, 1, 1 )
 
-[sub_resource type="VisualShaderNodeDotProduct" id=18]
+[sub_resource type="VisualShaderNodeDotProduct" id=8]
 
-[sub_resource type="VisualShaderNodeScalarOp" id=21]
+[sub_resource type="VisualShaderNodeScalarOp" id=9]
 default_input_values = [ 0, 0.0, 1, -1.0 ]
 operator = 2
 
-[sub_resource type="VisualShaderNodeScalarOp" id=22]
+[sub_resource type="VisualShaderNodeScalarOp" id=10]
 default_input_values = [ 0, 0.0, 1, 1.0 ]
 
-[sub_resource type="VisualShaderNodeScalarOp" id=23]
+[sub_resource type="VisualShaderNodeScalarOp" id=11]
 default_input_values = [ 0, 0.0, 1, 4.0 ]
 operator = 5
 
 [sub_resource type="VisualShader" id=12]
 code = "shader_type spatial;
+render_mode shadows_disabled, ambient_light_disabled;
+
 
 
 
@@ -100,25 +102,27 @@ void light() {
 
 }
 "
-graph_offset = Vector2( -283, 174.75 )
+graph_offset = Vector2( -283, 80 )
+flags/ambient_light_disabled = true
+flags/shadows_disabled = true
 nodes/fragment/0/position = Vector2( 760, 160 )
-nodes/fragment/2/node = SubResource( 15 )
+nodes/fragment/2/node = SubResource( 5 )
 nodes/fragment/2/position = Vector2( -380, 180 )
-nodes/fragment/3/node = SubResource( 16 )
+nodes/fragment/3/node = SubResource( 6 )
 nodes/fragment/3/position = Vector2( -380, 260 )
-nodes/fragment/4/node = SubResource( 17 )
+nodes/fragment/4/node = SubResource( 7 )
 nodes/fragment/4/position = Vector2( 540, 140 )
-nodes/fragment/5/node = SubResource( 18 )
+nodes/fragment/5/node = SubResource( 8 )
 nodes/fragment/5/position = Vector2( -160, 220 )
-nodes/fragment/7/node = SubResource( 21 )
+nodes/fragment/7/node = SubResource( 9 )
 nodes/fragment/7/position = Vector2( 40, 240 )
-nodes/fragment/8/node = SubResource( 22 )
+nodes/fragment/8/node = SubResource( 10 )
 nodes/fragment/8/position = Vector2( 220, 240 )
-nodes/fragment/9/node = SubResource( 23 )
+nodes/fragment/9/node = SubResource( 11 )
 nodes/fragment/9/position = Vector2( 500, 240 )
-nodes/fragment/10/node = SubResource( 19 )
+nodes/fragment/10/node = SubResource( 3 )
 nodes/fragment/10/position = Vector2( 520, 400 )
-nodes/fragment/11/node = SubResource( 20 )
+nodes/fragment/11/node = SubResource( 4 )
 nodes/fragment/11/position = Vector2( 240, 420 )
 nodes/fragment/connections = PoolIntArray( 4, 0, 0, 0, 2, 0, 5, 0, 3, 0, 5, 1, 7, 0, 8, 0, 5, 0, 7, 0, 8, 0, 9, 0, 9, 0, 0, 1, 8, 0, 10, 0 )
 nodes/light/0/position = Vector2( 660, 160 )
@@ -131,10 +135,16 @@ material = SubResource( 13 )
 radius = 105.0
 height = 210.0
 
+[sub_resource type="SpatialMaterial" id=15]
+flags_transparent = true
+flags_unshaded = true
+flags_albedo_tex_force_srgb = true
+params_billboard_mode = 1
+albedo_texture = ExtResource( 6 )
+
 [node name="FightTest" type="Spatial"]
 
 [node name="BWing" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, -1.49974e-008, 1.18382e-008, 1.49974e-008, 1, -1.64114e-008, -1.18382e-008, 1.64114e-008, 1, -1.57937e-008, 2.18949e-008, -1.33413 )
 
 [node name="Camera" type="Camera" parent="BWing"]
 transform = Transform( -1, -1.94281e-016, -8.74228e-008, -1.47345e-016, 1, 0, 8.74228e-008, 0, -1, -2.48812e-008, 0.118323, -0.265802 )
@@ -144,16 +154,16 @@ near = 0.01
 far = 1000.0
 
 [node name="VictoryII" parent="." instance=ExtResource( 2 )]
-transform = Transform( -0.2, 0, -3.01992e-008, 0, 0.2, 0, 3.01992e-008, 0, -0.2, 1.43051e-006, 0.62741, 9.36346 )
+transform = Transform( -0.0345767, 0, -0.196988, 0, 0.2, 0, 0.196988, 0, -0.0345767, 3.13386, 0.62741, 6.72549 )
 
 [node name="TIE" parent="." instance=ExtResource( 3 )]
-transform = Transform( -1, 0, -1.50996e-007, 0, 1, 0, 1.50996e-007, 0, -1, 4.52028e-007, -0.0223304, 2.99365 )
+transform = Transform( -0.172883, 0, -0.984942, 0, 1, 0, 0.984942, 0, -0.172883, -3.14004, -0.0223304, 5.62426 )
 
 [node name="TIE2" parent="." instance=ExtResource( 3 )]
-transform = Transform( -1, 0, -1.50996e-007, 0, 1, 0, 1.50996e-007, 0, -1, 0.173113, 0.147768, 3.22861 )
+transform = Transform( -0.172883, 0, -0.984942, 0, 1, 0, 0.984942, 0, -0.172883, -2.75269, 0.154924, 5.92897 )
 
 [node name="TIE3" parent="." instance=ExtResource( 3 )]
-transform = Transform( -1, 0, -1.50996e-007, 0, 1, 0, 1.50996e-007, 0, -1, -0.180585, 0.140566, 3.33249 )
+transform = Transform( -0.172883, 0, -0.984942, 0, 1, 0, 0.984942, 0, -0.172883, -2.91255, 0.133387, 5.45684 )
 
 [node name="Skybox4" parent="." instance=ExtResource( 4 )]
 
@@ -161,18 +171,23 @@ transform = Transform( -1, 0, -1.50996e-007, 0, 1, 0, 1.50996e-007, 0, -1, -0.18
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 158.27, 0, 141.18 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Planet"]
-mesh = SubResource( 9 )
+cast_shadow = 0
+mesh = SubResource( 2 )
 material/0 = null
 
 [node name="MeshInstance2" type="MeshInstance" parent="Planet"]
+cast_shadow = 0
 mesh = SubResource( 14 )
 material/0 = null
 
 [node name="OmniLight" type="OmniLight" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -328.56, 0, 208.557 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -265.993, -129.946, 208.557 )
+shadow_enabled = true
 omni_range = 5000.0
 
 [node name="Sprite3D" type="Sprite3D" parent="OmniLight"]
 transform = Transform( 0.700557, 0, -0.713596, 0, 1, 0, 0.713596, 0, 0.700557, 0, 0, 0 )
+material_override = SubResource( 15 )
+cast_shadow = 0
 pixel_size = 0.5
 texture = ExtResource( 6 )

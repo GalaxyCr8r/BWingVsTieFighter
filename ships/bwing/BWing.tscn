@@ -142,7 +142,9 @@ tracks/4/keys = {
 radius = 0.0276477
 height = 0.111941
 
-[node name="BWing" type="KinematicBody"]
+[node name="BWing" type="KinematicBody" groups=[
+"RebelShips",
+]]
 transform = Transform( 1, -1.49974e-008, 1.18382e-008, 1.49974e-008, 1, -1.64114e-008, -1.18382e-008, 1.64114e-008, 1, 0, 0, 0 )
 collision_layer = 9
 script = ExtResource( 1 )
