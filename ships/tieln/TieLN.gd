@@ -10,6 +10,7 @@ export(PackedScene) var packedLaser : PackedScene
 ## Internal Vars
 onready var tween : Tween = $Tween
 onready var targetingNode : Spatial = $TargetingNode
+onready var explosionEffect : Particles = $ExplosionEffect
 
 var roll : float = 0
 var pitch : float = 0
@@ -100,6 +101,12 @@ func _process(delta):
 	if destroyed:
 		destroyedCounter -= delta
 	if destroyedCounter < 0:
+		remove_child(explosionEffect)
+		get_parent().add_child(explosionEffect)
+		explosionEffect.transform = global_transform
+		explosionEffect.emitting = true
+		explosionEffect.owner = get_parent()
+		# TODO make it so when the explosion is done, it frees itself
 		queue_free()
 
 ## AI State Helper Funcs
