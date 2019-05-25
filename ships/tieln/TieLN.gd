@@ -93,7 +93,7 @@ func _process(delta):
 	### Other!
 	# If there's something to look at, look at it!
 	if lookAtTarget > -1:
-		global_transform.basis = startingBasis.slerp(targetBasis, lookAtTarget)
+		global_transform.basis = startingBasis.slerp(targetBasis, lookAtTarget) ## TODO Use a tween node to do this?
 	
 	## Countdown to actually destroying it
 	if destroyed:

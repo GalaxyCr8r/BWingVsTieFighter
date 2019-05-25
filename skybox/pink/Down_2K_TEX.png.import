@@ -3,16 +3,17 @@
 importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/Down_2K_TEX.png-4f01a05cfd48f8c22a967025536d37a3.s3tc.stex"
+path.etc2="res://.import/Down_2K_TEX.png-4f01a05cfd48f8c22a967025536d37a3.etc2.stex"
 path.etc="res://.import/Down_2K_TEX.png-4f01a05cfd48f8c22a967025536d37a3.etc.stex"
 metadata={
-"imported_formats": [ "s3tc", "etc" ],
+"imported_formats": [ "s3tc", "etc2", "etc" ],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://skybox/pink/Down_2K_TEX.png"
-dest_files=[ "res://.import/Down_2K_TEX.png-4f01a05cfd48f8c22a967025536d37a3.s3tc.stex", "res://.import/Down_2K_TEX.png-4f01a05cfd48f8c22a967025536d37a3.etc.stex" ]
+dest_files=[ "res://.import/Down_2K_TEX.png-4f01a05cfd48f8c22a967025536d37a3.s3tc.stex", "res://.import/Down_2K_TEX.png-4f01a05cfd48f8c22a967025536d37a3.etc2.stex", "res://.import/Down_2K_TEX.png-4f01a05cfd48f8c22a967025536d37a3.etc.stex" ]
 
 [params]
 

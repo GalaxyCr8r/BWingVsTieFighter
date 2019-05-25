@@ -20,12 +20,20 @@ var currentSpeed : float = maxSpeed * 0.5
 
 var sfoilsClosed := false
 
+var tween := Tween.new()
+
 ## Methods
 func _ready():
-	pass # Replace with function body.
+	add_child(tween)
+	tween.interpolate_property(self, "transform",
+		transform.translated(Vector3(0,0,-500)),
+		transform, 1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tween.start()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if tween.is_active():
+		return
+	
 	self.rotate(transform.basis.z, PI * ((0.0025 * yaw) + (0.005 * roll)))
 	self.rotate(transform.basis.y, PI * -1 * 0.005 * yaw)
 	self.rotate(transform.basis.x, PI * 0.0075 * pitch)

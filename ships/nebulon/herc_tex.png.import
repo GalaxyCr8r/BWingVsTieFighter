@@ -3,16 +3,17 @@
 importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/herc_tex.png-bff46a858e860f0b9a757c7a9ed7fbad.s3tc.stex"
+path.etc2="res://.import/herc_tex.png-bff46a858e860f0b9a757c7a9ed7fbad.etc2.stex"
 path.etc="res://.import/herc_tex.png-bff46a858e860f0b9a757c7a9ed7fbad.etc.stex"
 metadata={
-"imported_formats": [ "s3tc", "etc" ],
+"imported_formats": [ "s3tc", "etc2", "etc" ],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://ships/nebulon/herc_tex.png"
-dest_files=[ "res://.import/herc_tex.png-bff46a858e860f0b9a757c7a9ed7fbad.s3tc.stex", "res://.import/herc_tex.png-bff46a858e860f0b9a757c7a9ed7fbad.etc.stex" ]
+dest_files=[ "res://.import/herc_tex.png-bff46a858e860f0b9a757c7a9ed7fbad.s3tc.stex", "res://.import/herc_tex.png-bff46a858e860f0b9a757c7a9ed7fbad.etc2.stex", "res://.import/herc_tex.png-bff46a858e860f0b9a757c7a9ed7fbad.etc.stex" ]
 
 [params]
 

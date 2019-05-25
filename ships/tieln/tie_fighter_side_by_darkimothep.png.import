@@ -3,16 +3,17 @@
 importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/tie_fighter_side_by_darkimothep.png-04b950b76b77eb4142f7093d8e80a42b.s3tc.stex"
+path.etc2="res://.import/tie_fighter_side_by_darkimothep.png-04b950b76b77eb4142f7093d8e80a42b.etc2.stex"
 path.etc="res://.import/tie_fighter_side_by_darkimothep.png-04b950b76b77eb4142f7093d8e80a42b.etc.stex"
 metadata={
-"imported_formats": [ "s3tc", "etc" ],
+"imported_formats": [ "s3tc", "etc2", "etc" ],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://ships/tieln/tie_fighter_side_by_darkimothep.png"
-dest_files=[ "res://.import/tie_fighter_side_by_darkimothep.png-04b950b76b77eb4142f7093d8e80a42b.s3tc.stex", "res://.import/tie_fighter_side_by_darkimothep.png-04b950b76b77eb4142f7093d8e80a42b.etc.stex" ]
+dest_files=[ "res://.import/tie_fighter_side_by_darkimothep.png-04b950b76b77eb4142f7093d8e80a42b.s3tc.stex", "res://.import/tie_fighter_side_by_darkimothep.png-04b950b76b77eb4142f7093d8e80a42b.etc2.stex", "res://.import/tie_fighter_side_by_darkimothep.png-04b950b76b77eb4142f7093d8e80a42b.etc.stex" ]
 
 [params]
 
