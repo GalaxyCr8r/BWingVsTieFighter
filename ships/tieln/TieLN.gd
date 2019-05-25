@@ -93,7 +93,8 @@ func _process(delta):
 	### Other!
 	# If there's something to look at, look at it!
 	if lookAtTarget > -1:
-		global_transform.basis = startingBasis.slerp(targetBasis, lookAtTarget) ## TODO Use a tween node to do this?
+		## Basis must slerp, no tween for you
+		global_transform.basis = startingBasis.slerp(targetBasis, lookAtTarget)
 	
 	## Countdown to actually destroying it
 	if destroyed:
@@ -122,6 +123,14 @@ func try_to_find_target():
 		state = states.ATTACK
 		print("TIE ATTACK!")
 
+func attack_target(delta):
+	look_at_target()
+	
+	shootCounter -= delta
+	if shootCounter < 0:
+		shootCounter = shootInteval
+		fire_all()
+
 func target_is_to_close() -> bool:
 	if !target:
 		return true
@@ -133,36 +142,27 @@ func target_is_far_enough_away() -> bool:
 	return self.transform.origin.distance_to(target.transform.origin) > 7
 
 func look_at_target():
-	if tween.is_active():
-		return
-	
-	lookAtTarget = 0
-	tween.interpolate_property(self, "lookAtTarget", 0, 1.0,
-		2, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
-	tween.start()
-	startingBasis = global_transform.basis
-	targetBasis = target.transform.looking_at(global_transform.origin, Vector3.UP).basis
+	turn_towards(target.transform.looking_at(global_transform.origin, Vector3.UP).basis)
 
 func fly_away_from_target():
+	turn_towards(global_transform.looking_at(target.transform.origin, Vector3.UP).basis)
+
+func turn_towards(basis:Basis):
 	if tween.is_active():
 		return
+	
+	startingBasis = global_transform.basis
+	targetBasis = basis
+	
+	var rotSpeed = 90 #rotation speed in degrees per second # TODO Export this.
+	var angleDiff = acos(transform.basis.z.dot(targetBasis.z))
+	
+	var timeToTurn = angleDiff/deg2rad(rotSpeed)
 	
 	lookAtTarget = 0
 	tween.interpolate_property(self, "lookAtTarget", 0, 1.0,
 		2, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
 	tween.start()
-	startingBasis = global_transform.basis
-	var lookingAtTransform : Transform = target.transform.looking_at(global_transform.origin, Vector3.UP)
-	lookingAtTransform = lookingAtTransform.rotated(lookingAtTransform.basis.y, PI)
-	targetBasis = lookingAtTransform.basis
-
-func attack_target(delta):
-	look_at_target()
-	
-	shootCounter -= delta
-	if shootCounter < 0:
-		shootCounter = shootInteval
-		fire_all()
 
 ## Connected Signals
 func hit():
@@ -171,7 +171,6 @@ func hit():
 	state = states.DESTROYED
 	print("TIE DESTROYED!")
 	destroyed = true
+	# TODO Stop the TIE from colliding with future bullets?
 	roll = (randf() + 0.1) * 15
 	pitch = (randf() + 0.1) * 2 #1.2575
-	#self.rotate(transform.basis.x, PI * ((randf()/2)+0.1) * pitch)
-	#currentSpeed *= 1.5
