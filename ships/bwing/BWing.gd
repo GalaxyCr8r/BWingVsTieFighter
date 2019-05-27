@@ -13,10 +13,12 @@ onready var anim : AnimationPlayer = $AnimationPlayer
 
 var isPlayer = true
 
-var roll : float = 0
-var yaw : float = 0
-var pitch : float = 0
+var roll_input : float = 0
+var yaw_input : float = 0
+var pitch_input : float = 0
+var inertia : Vector3 = Vector3(0,0,0)
 var currentSpeed : float = maxSpeed * 0.5
+var targetSpeed : float = maxSpeed * 0.5
 
 var sfoilsClosed := false
 
@@ -34,9 +36,21 @@ func _process(delta):
 	if tween.is_active():
 		return
 	
-	self.rotate(transform.basis.z, PI * ((0.0025 * yaw) + (0.005 * roll)))
-	self.rotate(transform.basis.y, PI * -1 * 0.005 * yaw)
-	self.rotate(transform.basis.x, PI * 0.0075 * pitch)
+	if yaw_input == 0 and pitch_input == 0 and roll_input == 0:
+		#inertia.slerp(Vector3(), 0.25)
+		inertia = lerp(inertia, Vector3(0,0,0), 0.05)
+	else:
+		var new = Vector3()
+		new.z = PI * ((0.0025 * yaw_input) + (0.005 * roll_input))
+		new.y = PI * -1 * 0.005 * yaw_input
+		new.x = PI * 0.0075 * pitch_input
+		inertia = lerp(inertia, new, 0.05)
+	
+	self.rotate(transform.basis.z, inertia.z)
+	self.rotate(transform.basis.y, inertia.y)
+	self.rotate(transform.basis.x, inertia.x)
+	
+	currentSpeed = lerp(currentSpeed, targetSpeed, 0.25)
 	self.move_and_collide(transform.basis.z * (currentSpeed * 0.01) * delta)
 
 func fire_all():
@@ -57,45 +71,45 @@ func _input(event):
 	if event.is_action_released("ui_select"):
 		if sfoilsClosed:
 			anim.play_backwards("CloseSFoils")
-			currentSpeed = maxSpeed * 0.5
+			targetSpeed = maxSpeed * 0.5
 		else:
 			anim.play("CloseSFoils")
-			currentSpeed = maxSpeed
+			targetSpeed = maxSpeed
 		sfoilsClosed = !sfoilsClosed
 	
 	if event.is_action_released("ui_left") or event.is_action_released("ui_right"):
-		yaw = 0
+		yaw_input = 0
 	if event.is_action_pressed("ui_left"):
-		yaw = -1
+		yaw_input = -1
 	if event.is_action_pressed("ui_right"):
-		yaw = 1
+		yaw_input = 1
 		
 	if event.is_action_released("ui_down") or event.is_action_released("ui_up"):
-		pitch = 0
+		pitch_input = 0
 	if event.is_action_pressed("ui_down"):
-		pitch = -1
+		pitch_input = -1
 	if event.is_action_pressed("ui_up"):
-		pitch = 1
+		pitch_input = 1
 	
 	if event.is_action_released("roll_left") or event.is_action_released("roll_right"):
-		roll = 0
+		roll_input = 0
 	if event.is_action_pressed("roll_left"):
-		roll = -1
-	elif event.is_action_pressed("roll_right"):
-		roll = 1
-		
+		roll_input = -1
+	if event.is_action_pressed("roll_right"):
+		roll_input = 1
+	
 	if event is InputEventScreenDrag:
 		var screenSize := get_viewport().get_visible_rect().size
 		var screenSizeHalved := screenSize * 0.5
 		var event_position = event.position
 		#print (str(event_position.x-screenSizeHalved.x), ", ", str(event_position.y-screenSizeHalved.y))
-		yaw = (event_position.x-screenSizeHalved.x) / screenSizeHalved.x
-		pitch = (event_position.y-screenSizeHalved.y) / screenSizeHalved.y
+		yaw_input = (event_position.x-screenSizeHalved.x) / screenSizeHalved.x
+		pitch_input = (event_position.y-screenSizeHalved.y) / screenSizeHalved.y
 	
 	if event is InputEventScreenTouch:
 		if !event.pressed:
-			yaw = 0
-			pitch = 0
+			yaw_input = 0
+			pitch_input = 0
 
 ## Connected Signals
 func hit():

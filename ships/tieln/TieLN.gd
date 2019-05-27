@@ -101,12 +101,7 @@ func _process(delta):
 	if destroyed:
 		destroyedCounter -= delta
 	if destroyedCounter < 0:
-		remove_child(explosionEffect)
-		get_parent().add_child(explosionEffect)
-		explosionEffect.transform = global_transform
-		explosionEffect.emitting = true
-		explosionEffect.owner = get_parent()
-		# TODO make it so when the explosion is done, it frees itself
+		explosionEffect.explode()
 		queue_free()
 
 ## AI State Helper Funcs

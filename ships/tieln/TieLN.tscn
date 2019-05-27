@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://ships/tieln/TieLN.gd" type="Script" id=1]
 [ext_resource path="res://assets/ImpLaser.tscn" type="PackedScene" id=2]
@@ -8,7 +8,7 @@
 [ext_resource path="res://ships/tieln/tieLnBack.tres" type="Material" id=6]
 [ext_resource path="res://ships/tieln/tieLnFront.tres" type="Material" id=7]
 [ext_resource path="res://ships/tieln/engineMaterial.tres" type="Material" id=8]
-[ext_resource path="res://textures/poof.png" type="Texture" id=9]
+[ext_resource path="res://ships/ExplosionEffect.tscn" type="PackedScene" id=9]
 
 [sub_resource type="PlaneMesh" id=1]
 material = ExtResource( 8 )
@@ -22,47 +22,6 @@ extents = Vector3( 0.04, 0.02, 0.02 )
 
 [sub_resource type="PrismMesh" id=4]
 size = Vector3( 0.013, 0.25, 0.013 )
-
-[sub_resource type="SpatialMaterial" id=5]
-flags_transparent = true
-flags_unshaded = true
-flags_do_not_receive_shadows = true
-flags_disable_ambient_light = true
-vertex_color_use_as_albedo = true
-params_billboard_mode = 3
-particles_anim_h_frames = 1
-particles_anim_v_frames = 1
-particles_anim_loop = false
-albedo_texture = ExtResource( 9 )
-
-[sub_resource type="Gradient" id=8]
-offsets = PoolRealArray( 0, 0.124444, 0.271111, 0.577778, 1 )
-colors = PoolColorArray( 1, 0.955078, 0, 1, 1, 0.204444, 0.204444, 1, 0.807843, 0.596078, 0.2, 0.835294, 0.306152, 0.20671, 0.123178, 1, 0.290196, 0.219608, 0.219608, 0.501961 )
-
-[sub_resource type="GradientTexture" id=9]
-gradient = SubResource( 8 )
-
-[sub_resource type="Curve" id=10]
-max_value = 2.0
-_data = [ Vector2( 0, 2 ), 0.0, -14.219, 0, 0, Vector2( 0.155671, 0.8812 ), 8.00337, 8.00337, 0, 0, Vector2( 0.394676, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 1.5148 ), 2.63119, 0.0, 0, 0 ]
-
-[sub_resource type="CurveTexture" id=11]
-curve = SubResource( 10 )
-
-[sub_resource type="ParticlesMaterial" id=7]
-spread = 180.0
-gravity = Vector3( 0, 0, 0 )
-initial_velocity = 1.0
-initial_velocity_random = 1.0
-damping = 1.6
-scale_random = 0.17
-scale_curve = SubResource( 11 )
-color_ramp = SubResource( 9 )
-anim_speed = 14.55
-
-[sub_resource type="QuadMesh" id=6]
-material = SubResource( 5 )
-size = Vector2( 0.5, 0.5 )
 
 [node name="TIE" type="KinematicBody" groups=[
 "ImpShips",
@@ -127,12 +86,4 @@ visible = false
 mesh = SubResource( 4 )
 material/0 = null
 
-[node name="ExplosionEffect" type="Particles" parent="."]
-material_override = SubResource( 5 )
-emitting = false
-amount = 9
-one_shot = true
-explosiveness = 0.44
-randomness = 1.0
-process_material = SubResource( 7 )
-draw_pass_1 = SubResource( 6 )
+[node name="ExplosionEffect" parent="." instance=ExtResource( 9 )]
