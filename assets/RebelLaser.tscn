@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/RebelLaser.gd" type="Script" id=1]
+[ext_resource path="res://assets/LaserPoof.tscn" type="PackedScene" id=2]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.02
@@ -29,5 +30,8 @@ script = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
+cast_shadow = 0
 mesh = SubResource( 2 )
 material/0 = SubResource( 3 )
+
+[node name="LaserPoof" parent="." instance=ExtResource( 2 )]

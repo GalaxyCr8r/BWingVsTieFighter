@@ -1,0 +1,28 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://textures/poof.material" type="Material" id=1]
+[ext_resource path="res://assets/LaserPoof.gd" type="Script" id=2]
+
+[sub_resource type="Curve" id=6]
+_data = [ Vector2( 0, 0 ), 0.0, 5.09844, 0, 0, Vector2( 0.0746528, 0.1876 ), -0.751965, -0.751965, 0, 0, Vector2( 0.289352, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=7]
+curve = SubResource( 6 )
+
+[sub_resource type="ParticlesMaterial" id=4]
+next_pass = ExtResource( 1 )
+gravity = Vector3( 0, 0, 0 )
+scale_curve = SubResource( 7 )
+color = Color( 1, 0, 0, 1 )
+
+[sub_resource type="QuadMesh" id=5]
+material = ExtResource( 1 )
+
+[node name="LaserPoof" type="Particles"]
+emitting = false
+amount = 1
+one_shot = true
+visibility_aabb = AABB( -0.5, -0.5, -0.5, 1, 1, 1 )
+process_material = SubResource( 4 )
+draw_pass_1 = SubResource( 5 )
+script = ExtResource( 2 )

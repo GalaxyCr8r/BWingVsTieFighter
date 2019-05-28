@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/ImpLaser.gd" type="Script" id=1]
+[ext_resource path="res://assets/LaserPoof.tscn" type="PackedScene" id=2]
+[ext_resource path="res://textures/poof.material" type="Material" id=3]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.02
@@ -20,6 +22,18 @@ emission_energy = 16.0
 emission_operator = 0
 emission_on_uv2 = false
 
+[sub_resource type="Curve" id=4]
+_data = [ Vector2( 0, 0 ), 0.0, 5.09844, 0, 0, Vector2( 0.0746528, 0.1876 ), -0.751965, -0.751965, 0, 0, Vector2( 0.289352, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=6]
+next_pass = ExtResource( 3 )
+gravity = Vector3( 0, 0, 0 )
+scale_curve = SubResource( 5 )
+color = Color( 0, 1, 0, 1 )
+
 [node name="ImpLaser" type="KinematicBody"]
 collision_layer = 2
 collision_mask = 8
@@ -29,5 +43,9 @@ script = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
+cast_shadow = 0
 mesh = SubResource( 2 )
 material/0 = SubResource( 3 )
+
+[node name="LaserPoof" parent="." instance=ExtResource( 2 )]
+process_material = SubResource( 6 )

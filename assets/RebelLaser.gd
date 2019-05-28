@@ -9,7 +9,7 @@ export var speed : float = 250
 export var lifetime : float = 10
 
 ## Internal Vars
-#onready var  : =
+onready var laserPoof = $LaserPoof
 
 var hit := false
 
@@ -21,16 +21,21 @@ func _process(delta):
 	
 	lifetime -= delta
 	if lifetime < 0:
-		hit = true
-		queue_free()
+		hit()
 		return
 	
 	var collision_info = move_and_collide(transform.basis.z * (speed * 0.01) * delta)
 	if collision_info:
 		if collision_info.collider and collision_info.collider.has_method("hit"):
 			collision_info.collider.hit()
+			hit()
 			print ("Rebel laser hit, hittable col: ", collision_info.collider)
 		else:
 			print ("Rebel laser hit, non-hittable col: ", collision_info.collider)
+
+func hit():
+	hit = true
+	laserPoof.poof()
+	queue_free()
 
 ## Connected Signals

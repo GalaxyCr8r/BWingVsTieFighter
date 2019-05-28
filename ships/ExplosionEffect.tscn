@@ -1,19 +1,7 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://textures/poof.png" type="Texture" id=1]
+[ext_resource path="res://textures/poof.material" type="Material" id=1]
 [ext_resource path="res://ships/tieln/ExplosionEffect.gd" type="Script" id=2]
-
-[sub_resource type="SpatialMaterial" id=1]
-flags_transparent = true
-flags_unshaded = true
-flags_do_not_receive_shadows = true
-flags_disable_ambient_light = true
-vertex_color_use_as_albedo = true
-params_billboard_mode = 3
-particles_anim_h_frames = 1
-particles_anim_v_frames = 1
-particles_anim_loop = false
-albedo_texture = ExtResource( 1 )
 
 [sub_resource type="Gradient" id=2]
 offsets = PoolRealArray( 0, 0.124444, 0.271111, 0.577778, 1 )
@@ -42,11 +30,11 @@ color_ramp = SubResource( 3 )
 anim_speed = 14.55
 
 [sub_resource type="QuadMesh" id=7]
-material = SubResource( 1 )
+material = ExtResource( 1 )
 size = Vector2( 0.5, 0.5 )
 
 [node name="ExplosionEffect" type="Particles"]
-material_override = SubResource( 1 )
+material_override = ExtResource( 1 )
 emitting = false
 amount = 9
 one_shot = true

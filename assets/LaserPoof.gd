@@ -1,5 +1,4 @@
 extends Particles
-## This removes itself from it's current parent so that the effect won't be tied to the ship's lifetime&transform.
 
 ## Provided Signals
 #signal value_changed(new_value)
@@ -9,7 +8,6 @@ extends Particles
 
 ## Internal Vars
 #onready var  : =
-
 var exploded := false
 
 ## Methods
@@ -18,13 +16,13 @@ func _process(delta):
 		queue_free()
 		print ("Explosion freed itself!")
 
-func explode():
-	# Set transform to the current ship's transform.
+func poof():
+	# Set transform to the current laser's transform.
 	transform = get_parent().global_transform
 	emitting = true
 	exploded = true
 	
-	# Reparent to the node above the current ship.
+	# Reparent to the node above the current laser.
 	var parent = get_parent()
 	parent.remove_child(self)
 	parent.get_parent().add_child(self)
