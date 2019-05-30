@@ -17,10 +17,10 @@ var roll_input : float = 0
 var yaw_input : float = 0
 var pitch_input : float = 0
 var inertia : Vector3 = Vector3(0,0,0)
-var currentSpeed : float = maxSpeed * 0.5
-var targetSpeed : float = maxSpeed * 0.5
+var currentSpeed : float = maxSpeed
+var targetSpeed : float = currentSpeed
 
-var sfoilsClosed := false
+var sfoilsClosed := true
 
 var tween := Tween.new()
 

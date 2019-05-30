@@ -166,7 +166,7 @@ material/2 = null
 transform = Transform( 1, -1.94281e-016, 0, -1.94281e-016, 1, 0, 0, 0, 1, 0.309288, -6.00889e-017, 0 )
 
 [node name="Wing1" type="MeshInstance" parent="Spatial"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.85704e-018, 0.025, 0 )
+transform = Transform( -4.37114e-008, 1, 0, -1, -4.37114e-008, 0, 0, 0, 1, -4.85704e-018, 0.025, 0 )
 material_override = ExtResource( 3 )
 mesh = ExtResource( 5 )
 material/0 = null
@@ -175,7 +175,7 @@ material/0 = null
 transform = Transform( 1, -1.94281e-016, 0, -1.94281e-016, 1, 0, 0, 0, 1, 1.33016e-009, 0.138651, 0.0632902 )
 
 [node name="Wing2" type="MeshInstance" parent="Spatial"]
-transform = Transform( 1, -5.78308e-008, 1.55914e-008, 5.78308e-008, 1, -1.13462e-008, -1.55914e-008, 1.13462e-008, 1, 4.85704e-018, -0.025, 0 )
+transform = Transform( -4.37114e-008, -1, 0, 1, -4.37114e-008, 0, 0, 0, 1, 4.85704e-018, -0.025, 0 )
 material_override = ExtResource( 3 )
 mesh = ExtResource( 6 )
 material/0 = null
