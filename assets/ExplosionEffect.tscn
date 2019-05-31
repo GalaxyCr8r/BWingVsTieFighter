@@ -1,0 +1,82 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://textures/poof.material" type="Material" id=1]
+[ext_resource path="res://assets/ExplosionEffect.gd" type="Script" id=2]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0, 0.0545455, 0.133333, 0.260606, 0.739394, 1 )
+colors = PoolColorArray( 1, 0.955078, 0, 1, 1, 0.204444, 0.204444, 1, 0.807843, 0.596078, 0.2, 0.835294, 0.306152, 0.20671, 0.123178, 1, 0.290196, 0.219608, 0.219608, 0.466667, 0.737255, 0.709804, 0.709804, 0 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="Curve" id=3]
+max_value = 2.0
+_data = [ Vector2( 0, 2 ), 0.0, -14.219, 0, 0, Vector2( 0.155671, 0.8812 ), 8.00337, 8.00337, 0, 0, Vector2( 0.267292, 0.9912 ), -1.57683, -1.57683, 0, 0, Vector2( 0.998252, 1.8778 ), 0.21628, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=4]
+curve = SubResource( 3 )
+
+[sub_resource type="ParticlesMaterial" id=5]
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 1.0
+initial_velocity_random = 1.0
+angular_velocity = 7.0
+damping = 1.6
+scale_random = 0.17
+scale_curve = SubResource( 4 )
+color_ramp = SubResource( 2 )
+anim_speed = 14.55
+
+[sub_resource type="QuadMesh" id=6]
+material = ExtResource( 1 )
+size = Vector2( 0.5, 0.5 )
+
+[sub_resource type="Animation" id=7]
+resource_name = "Explode"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+
+[node name="ExplosionEffect" type="Particles"]
+material_override = ExtResource( 1 )
+cast_shadow = 0
+emitting = false
+amount = 9
+lifetime = 1.25
+one_shot = true
+explosiveness = 0.44
+randomness = 1.0
+visibility_aabb = AABB( -1, -1, -1, 2, 2, 2 )
+process_material = SubResource( 5 )
+draw_pass_1 = SubResource( 6 )
+script = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Explode = SubResource( 7 )
+

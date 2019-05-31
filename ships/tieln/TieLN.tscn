@@ -8,7 +8,8 @@
 [ext_resource path="res://ships/tieln/tieLnBack.tres" type="Material" id=6]
 [ext_resource path="res://ships/tieln/tieLnFront.tres" type="Material" id=7]
 [ext_resource path="res://ships/tieln/engineMaterial.tres" type="Material" id=8]
-[ext_resource path="res://ships/ExplosionEffect.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/ExplosionEffect.tscn" type="PackedScene" id=9]
+
 
 [sub_resource type="PlaneMesh" id=1]
 material = ExtResource( 8 )

@@ -79,3 +79,4 @@ material_override = SubResource( 4 )
 cast_shadow = 0
 pixel_size = 0.5
 texture = ExtResource( 7 )
+

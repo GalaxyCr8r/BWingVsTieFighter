@@ -8,21 +8,15 @@ extends Particles
 #export var value : int = 0 setget set_value, get_value
 
 ## Internal Vars
-#onready var  : =
-
-var exploded := false
+onready var animationPlayer : AnimationPlayer = $AnimationPlayer
 
 ## Methods
-func _process(delta):
-	if exploded and emitting == false:
-		queue_free()
-		print ("Explosion freed itself!")
-
 func explode():
 	# Set transform to the current ship's transform.
 	transform = get_parent().global_transform
-	emitting = true
-	exploded = true
+	
+	# Explode!
+	animationPlayer.play("Explode")
 	
 	# Reparent to the node above the current ship.
 	var parent = get_parent()
