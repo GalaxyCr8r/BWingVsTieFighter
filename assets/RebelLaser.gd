@@ -26,9 +26,9 @@ func _process(delta):
 	
 	var collision_info = move_and_collide(transform.basis.z * (speed * 0.01) * delta)
 	if collision_info:
+		hit()
 		if collision_info.collider and collision_info.collider.has_method("hit"):
 			collision_info.collider.hit()
-			hit()
 			print ("Rebel laser hit, hittable col: ", collision_info.collider)
 		else:
 			print ("Rebel laser hit, non-hittable col: ", collision_info.collider)

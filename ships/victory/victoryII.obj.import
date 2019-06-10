@@ -1,0 +1,18 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/victoryII.obj-574560af89c0da7418179704dee2df1c.mesh"
+
+[deps]
+
+files=[ "res://.import/victoryII.obj-574560af89c0da7418179704dee2df1c.mesh" ]
+
+source_file="res://ships/victory/victoryII.obj"
+dest_files=[ "res://.import/victoryII.obj-574560af89c0da7418179704dee2df1c.mesh", "res://.import/victoryII.obj-574560af89c0da7418179704dee2df1c.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+optimize_mesh=true

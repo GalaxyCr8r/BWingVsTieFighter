@@ -33,6 +33,8 @@ var lookAtTarget : float = -1
 var startingBasis : Basis = Basis()
 var targetBasis : Basis = Basis()
 
+var hp := 2
+
 ## Methods
 func _ready():
 	randomize()
@@ -81,6 +83,8 @@ func _process(delta):
 		states.ATTACK:
 			if target_is_to_close():
 				state = states.FLEE
+				fly_away_from_target()
+				
 				print("Oh crap - FLEE!!!")
 			else:
 				attack_target(delta)
@@ -147,7 +151,10 @@ func look_at_target():
 	turn_towards(target.transform.looking_at(global_transform.origin, Vector3.UP).basis)
 
 func fly_away_from_target():
-	turn_towards(global_transform.looking_at(target.transform.origin, Vector3.UP).basis)
+	var targetTransform := global_transform.looking_at(target.transform.origin, Vector3.UP)
+	targetTransform = targetTransform.rotated(transform.basis.x, PI/3 * (randf() - 0.5))
+	
+	turn_towards(targetTransform.basis)
 
 func turn_towards(basis:Basis):
 	if tween.is_active():
@@ -168,6 +175,10 @@ func turn_towards(basis:Basis):
 
 ## Connected Signals
 func hit():
+	if hp > 0:
+		hp -= 1
+		return
+	
 	tween.stop_all()
 	lookAtTarget = -1
 	state = states.DESTROYED

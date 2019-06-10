@@ -21,6 +21,8 @@ var currentSpeed : float = maxSpeed
 var targetSpeed : float = currentSpeed
 
 var sfoilsClosed := true
+var isFiring := false
+var fireAgain = 0
 
 var tween := Tween.new()
 
@@ -45,6 +47,10 @@ func _process(delta):
 		new.y = PI * -1 * 0.005 * yaw_input
 		new.x = PI * 0.0075 * pitch_input
 		inertia = lerp(inertia, new, 0.05)
+		
+	if isFiring:
+		fireAgain -= delta
+		fire_all()
 	
 	self.rotate(transform.basis.z, inertia.z)
 	self.rotate(transform.basis.y, inertia.y)
@@ -54,6 +60,11 @@ func _process(delta):
 	self.move_and_collide(transform.basis.z * (currentSpeed * 0.01) * delta)
 
 func fire_all():
+	if fireAgain < 0:
+		fireAgain = 0.25
+	else:
+		return
+	
 	for hardPointPath in hardPoints:
 		var hardPoint : Position3D = get_node(hardPointPath)
 		var laser : RebelLaser = packedLaser.instance()
@@ -65,16 +76,20 @@ func _input(event):
 	if !isPlayer:
 		return
 	
-	if event.is_action_released("ui_accept"):
-		fire_all()
+	if event.is_action_pressed("ui_accept"):
+		isFiring = true
+	elif event.is_action_released("ui_accept"):
+		isFiring = false
 	
 	if event.is_action_released("ui_select"):
 		if sfoilsClosed:
 			anim.play_backwards("CloseSFoils")
 			targetSpeed = maxSpeed * 0.5
+			$CameraPivot.goSlow()
 		else:
 			anim.play("CloseSFoils")
 			targetSpeed = maxSpeed
+			$CameraPivot.goFast()
 		sfoilsClosed = !sfoilsClosed
 	
 	if event.is_action_released("ui_left") or event.is_action_released("ui_right"):
