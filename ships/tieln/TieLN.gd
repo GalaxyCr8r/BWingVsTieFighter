@@ -140,7 +140,7 @@ func attack_target(delta):
 func target_is_to_close() -> bool:
 	if !target:
 		return true
-	return self.transform.origin.distance_to(target.transform.origin) < 1.75
+	return self.transform.origin.distance_to(target.transform.origin) < 2.75
 
 func target_is_far_enough_away() -> bool:
 	if !target:

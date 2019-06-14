@@ -3,6 +3,7 @@
 [ext_resource path="res://assets/LightSpeedStar.gd" type="Script" id=1]
 
 [sub_resource type="SpatialMaterial" id=1]
+flags_transparent = true
 flags_do_not_receive_shadows = true
 flags_disable_ambient_light = true
 params_blend_mode = 1
@@ -22,6 +23,7 @@ rings = 4
 
 [sub_resource type="Animation" id=3]
 resource_name = "LeaveLightspeed"
+length = 1.25
 tracks/0/type = "value"
 tracks/0/path = NodePath("Spatial:scale")
 tracks/0/interp = 1
@@ -29,7 +31,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.8, 1 ),
+"times": PoolRealArray( 0, 0.6, 1 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector3( 1, 1, 1000 ), Vector3( 1, 1, 500 ), Vector3( 1, 1, 1 ) ]
@@ -41,10 +43,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.6, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 1, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 0.745098, 0.854902, 1, 0.709804 ), Color( 0.745098, 0.854902, 1, 0 ) ]
+"values": [ Color( 0.745098, 0.854902, 1, 1 ), Color( 0.745098, 0.854902, 1, 0.709804 ), Color( 0.745098, 0.854902, 1, 0 ) ]
 }
 
 [node name="LSS" type="Spatial"]

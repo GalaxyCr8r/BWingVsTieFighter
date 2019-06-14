@@ -10,8 +10,8 @@ export var lightSpeedStar : PackedScene
 ## Internal Vars
 #onready var  : =
 
-var starAmount = 100
-var distanceFromPlayer = 2
+var starAmount = 250
+var distanceFromPlayer = 15
 
 ## Methods
 func _ready():
@@ -28,9 +28,9 @@ func createStars():
 
 func getNewStarPosition() -> Vector3:
 	var starPos := Vector3(0,0,0)
-	starPos.x = (randf()-0.5) * 2 * distanceFromPlayer
+	starPos.x = (randf()-0.5) * 2.5 * distanceFromPlayer
 	starPos.y = (randf()-0.5) * 2 * distanceFromPlayer
-	starPos.z = -2 #(randf()-1.0) * distanceFromPlayer
-	return starPos
+	starPos.z = (randf()-2.0) * distanceFromPlayer
+	return starPos.normalized() * ((randf() + 0.25) * distanceFromPlayer)
 
 ## Connected Signals
