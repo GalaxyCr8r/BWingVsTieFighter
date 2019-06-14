@@ -6,3 +6,4 @@
 params_use_alpha_scissor = true
 params_alpha_scissor_threshold = 0.98
 albedo_texture = ExtResource( 1 )
+

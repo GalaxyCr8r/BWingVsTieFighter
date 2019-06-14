@@ -61,7 +61,10 @@ func _process(delta):
 
 func fire_all():
 	if fireAgain < 0:
-		fireAgain = 0.25
+		if sfoilsClosed:
+			fireAgain = 0.66 # If they are closed, the radiators are less efficient.
+		else:
+			fireAgain = 0.25
 	else:
 		return
 	
@@ -92,19 +95,23 @@ func _input(event):
 			$CameraPivot.goFast()
 		sfoilsClosed = !sfoilsClosed
 	
-	if event.is_action_released("ui_left") or event.is_action_released("ui_right"):
-		yaw_input = 0
 	if event.is_action_pressed("ui_left"):
-		yaw_input = -1
+		yaw_input -= 1
+	if event.is_action_released("ui_left"):
+		yaw_input += 1
 	if event.is_action_pressed("ui_right"):
-		yaw_input = 1
+		yaw_input += 1
+	if event.is_action_released("ui_right"):
+		yaw_input -= 1
 		
-	if event.is_action_released("ui_down") or event.is_action_released("ui_up"):
-		pitch_input = 0
 	if event.is_action_pressed("ui_down"):
-		pitch_input = -1
+		pitch_input -= 1
+	if event.is_action_released("ui_down"):
+		pitch_input += 1
 	if event.is_action_pressed("ui_up"):
-		pitch_input = 1
+		pitch_input += 1
+	if event.is_action_released("ui_up"):
+		pitch_input -= 1
 	
 	if event.is_action_released("roll_left") or event.is_action_released("roll_right"):
 		roll_input = 0

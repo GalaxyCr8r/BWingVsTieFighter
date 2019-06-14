@@ -209,3 +209,4 @@ anims/Landing = SubResource( 2 )
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( -4.37114e-008, -1.94282e-016, 1, 0, 1, -4.46436e-015, -1, 0, -4.37114e-008, 0.01, -1.94282e-018, 0 )
 shape = SubResource( 3 )
+

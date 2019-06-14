@@ -1,18 +1,19 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://ships/bwing/BWing.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scenes/CameraPivot.gd" type="Script" id=2]
-[ext_resource path="res://ships/victory/VictoryII.tscn" type="PackedScene" id=3]
-[ext_resource path="res://ships/tieln/TieLN.tscn" type="PackedScene" id=4]
-[ext_resource path="res://skybox/SkyBox4.tscn" type="PackedScene" id=5]
-[ext_resource path="res://textures/Terraformed Mars 2229_DizzyCrow.jpg" type="Texture" id=6]
-[ext_resource path="res://materials/test_planet.material" type="Material" id=7]
-[ext_resource path="res://assets/Star.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/LightSpeedEffect.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/CameraPivot.gd" type="Script" id=3]
+[ext_resource path="res://ships/victory/VictoryII.tscn" type="PackedScene" id=4]
+[ext_resource path="res://ships/tieln/TieLN.tscn" type="PackedScene" id=5]
+[ext_resource path="res://skybox/SkyBox4.tscn" type="PackedScene" id=6]
+[ext_resource path="res://textures/Terraformed Mars 2229_DizzyCrow.jpg" type="Texture" id=7]
+[ext_resource path="res://materials/test_planet.material" type="Material" id=8]
+[ext_resource path="res://assets/Star.tscn" type="PackedScene" id=9]
 
 [sub_resource type="SpatialMaterial" id=1]
 params_diffuse_mode = 1
 params_specular_mode = 2
-albedo_texture = ExtResource( 6 )
+albedo_texture = ExtResource( 7 )
 
 [sub_resource type="SphereMesh" id=2]
 material = SubResource( 1 )
@@ -20,7 +21,7 @@ radius = 104.0
 height = 208.0
 
 [sub_resource type="SphereMesh" id=3]
-material = ExtResource( 7 )
+material = ExtResource( 8 )
 radius = 105.0
 height = 210.0
 
@@ -28,8 +29,11 @@ height = 210.0
 
 [node name="BWing" parent="." instance=ExtResource( 1 )]
 
+[node name="LightSpeedEffect" parent="BWing" instance=ExtResource( 2 )]
+transform = Transform( -1, -1.94281e-016, -8.74228e-008, -1.47345e-016, 1, 0, 8.74228e-008, 0, -1, 0, 0, 0 )
+
 [node name="CameraPivot" type="Spatial" parent="BWing"]
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 
 [node name="Camera" type="Camera" parent="BWing/CameraPivot"]
 transform = Transform( -1, -1.94281e-016, -8.74228e-008, -1.47345e-016, 1, 0, 8.74228e-008, 0, -1, -3.50829e-008, 0.118323, -0.382496 )
@@ -39,46 +43,46 @@ far = 1000.0
 
 [node name="Tween" type="Tween" parent="BWing/CameraPivot"]
 
-[node name="VictoryII" parent="." instance=ExtResource( 3 )]
+[node name="VictoryII" parent="." instance=ExtResource( 4 )]
 transform = Transform( -0.0345767, 0, -0.196988, 0, 0.2, 0, 0.196988, 0, -0.0345767, 3.13386, 0.62741, 12.0437 )
 
-[node name="TIE" parent="." instance=ExtResource( 4 )]
+[node name="TIE" parent="." instance=ExtResource( 5 )]
 transform = Transform( -0.172883, -0.82169, -0.54308, 0, 0.551383, -0.834252, 0.984942, -0.144228, -0.0953247, 2.25563, -0.0166934, 11.9985 )
 
-[node name="TIE5" parent="." instance=ExtResource( 4 )]
+[node name="TIE5" parent="." instance=ExtResource( 5 )]
 transform = Transform( -0.948937, 0.0968305, -0.300237, 0.134036, 0.985306, -0.105862, 0.285575, -0.140699, -0.947971, 0.431261, -0.116962, 11.0401 )
 
-[node name="TIE9" parent="." instance=ExtResource( 4 )]
+[node name="TIE9" parent="." instance=ExtResource( 5 )]
 transform = Transform( -0.948937, 0.0968305, -0.300237, 0.134036, 0.985306, -0.105862, 0.285575, -0.140699, -0.947971, -0.13178, -0.116962, 11.0401 )
 
-[node name="TIE12" parent="." instance=ExtResource( 4 )]
+[node name="TIE12" parent="." instance=ExtResource( 5 )]
 transform = Transform( -0.948937, 0.0968305, -0.300237, 0.134036, 0.985306, -0.105862, 0.285575, -0.140699, -0.947971, -0.13178, -0.550112, 11.8708 )
 
-[node name="TIE2" parent="." instance=ExtResource( 4 )]
+[node name="TIE2" parent="." instance=ExtResource( 5 )]
 transform = Transform( -0.172883, -0.82169, -0.54308, 0, 0.551383, -0.834252, 0.984942, -0.144228, -0.0953247, 2.17924, -0.257126, 12.0647 )
 
-[node name="TIE4" parent="." instance=ExtResource( 4 )]
+[node name="TIE4" parent="." instance=ExtResource( 5 )]
 transform = Transform( -0.948937, 0.0968305, -0.300237, 0.134036, 0.985306, -0.105862, 0.285575, -0.140699, -0.947971, 0.278388, -0.209594, 10.8502 )
 
-[node name="TIE7" parent="." instance=ExtResource( 4 )]
+[node name="TIE7" parent="." instance=ExtResource( 5 )]
 transform = Transform( -0.948937, 0.0968305, -0.300237, 0.134036, 0.985306, -0.105862, 0.285575, -0.140699, -0.947971, -0.284653, -0.209594, 10.8502 )
 
-[node name="TIE10" parent="." instance=ExtResource( 4 )]
+[node name="TIE10" parent="." instance=ExtResource( 5 )]
 transform = Transform( -0.948937, 0.0968305, -0.300237, 0.134036, 0.985306, -0.105862, 0.285575, -0.140699, -0.947971, -0.284653, -0.642743, 11.6809 )
 
-[node name="TIE3" parent="." instance=ExtResource( 4 )]
+[node name="TIE3" parent="." instance=ExtResource( 5 )]
 transform = Transform( -0.172883, -0.82169, -0.54308, 0, 0.551383, -0.834252, 0.984942, -0.144228, -0.0953247, 2.1554, -0.350104, 11.8282 )
 
-[node name="TIE6" parent="." instance=ExtResource( 4 )]
+[node name="TIE6" parent="." instance=ExtResource( 5 )]
 transform = Transform( -0.948937, 0.0968305, -0.300237, 0.134036, 0.985306, -0.105862, 0.285575, -0.140699, -0.947971, 0.461812, -0.249835, 10.6773 )
 
-[node name="TIE8" parent="." instance=ExtResource( 4 )]
+[node name="TIE8" parent="." instance=ExtResource( 5 )]
 transform = Transform( -0.948937, 0.0968305, -0.300237, 0.134036, 0.985306, -0.105862, 0.285575, -0.140699, -0.947971, -0.101229, -0.249835, 10.6773 )
 
-[node name="TIE11" parent="." instance=ExtResource( 4 )]
+[node name="TIE11" parent="." instance=ExtResource( 5 )]
 transform = Transform( -0.948937, 0.0968305, -0.300237, 0.134036, 0.985306, -0.105862, 0.285575, -0.140699, -0.947971, -0.101229, -0.682985, 11.508 )
 
-[node name="Skybox4" parent="." instance=ExtResource( 5 )]
+[node name="Skybox4" parent="." instance=ExtResource( 6 )]
 
 [node name="Planet" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 158.27, 0, 141.18 )
@@ -93,4 +97,5 @@ cast_shadow = 0
 mesh = SubResource( 3 )
 material/0 = null
 
-[node name="Star" parent="." instance=ExtResource( 8 )]
+[node name="Star" parent="." instance=ExtResource( 9 )]
+
