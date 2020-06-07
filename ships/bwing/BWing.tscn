@@ -21,7 +21,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1.25 ),
+"times": PoolRealArray( 0, 0.7 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, -90 ) ]
@@ -33,10 +33,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 1.25 ),
+"times": PoolRealArray( 0, 0.7 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector3( 6.50086e-007, 8.93324e-007, 3.31346e-006 ), Vector3( 0, 0, 90 ) ]
+"values": [ Vector3( 6.50086e-07, 8.93324e-07, 3.31346e-06 ), Vector3( 0, 0, 90 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Spatial/LandingPadMajor:translation")
@@ -74,6 +74,30 @@ tracks/4/keys = {
 "update": 0,
 "values": [ Vector3( 90, 0, 0 ) ]
 }
+tracks/5/type = "value"
+tracks/5/path = NodePath("Spatial:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.3, 1.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, -90 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("CollisionShape:rotation_degrees")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.3, 1.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 90, 90, 0 ), Vector3( -1.11315e-14, 90, 0 ) ]
+}
 
 [sub_resource type="Animation" id=2]
 length = 2.0
@@ -99,7 +123,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 1.6 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector3( 6.50087e-007, 8.93324e-007, 3.31346e-006 ), Vector3( 0, 0, 90 ) ]
+"values": [ Vector3( 6.50087e-07, 8.93324e-07, 3.31346e-06 ), Vector3( 0, 0, 90 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Spatial/LandingPadMajor:translation")
@@ -123,7 +147,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 1.5, 2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector3( 90, 0, 0 ), Vector3( 0, 0, -1.11315e-014 ) ]
+"values": [ Vector3( 90, 0, 0 ), Vector3( 0, 0, -1.11315e-14 ) ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("Spatial/LandingPadMinor:translation")
@@ -145,17 +169,17 @@ height = 0.111941
 [node name="BWing" type="KinematicBody" groups=[
 "RebelShips",
 ]]
-transform = Transform( 1, -1.49974e-008, 1.18382e-008, 1.49974e-008, 1, -1.64114e-008, -1.18382e-008, 1.64114e-008, 1, 0, 0, 0 )
+transform = Transform( 1, -1.49974e-08, 1.18382e-08, 1.49974e-08, 1, -1.64114e-08, -1.18382e-08, 1.64114e-08, 1, 0, 0, 0 )
 collision_layer = 9
 script = ExtResource( 1 )
 hardPoints = [ NodePath("Spatial/Hull/hardpoint3"), NodePath("Spatial/Wing1/hardpoint1"), NodePath("Spatial/Wing2/hardpoint2") ]
 packedLaser = ExtResource( 2 )
 
 [node name="Spatial" type="Spatial" parent="."]
-transform = Transform( 0.25, -4.85704e-017, 0, -4.85704e-017, 0.25, 0, 0, 0, 0.25, 0, 0, 0 )
+transform = Transform( -4.07302e-08, 0.25, 0, -0.25, -4.07302e-08, 0, 0, 0, 0.25, 0, 0, 0 )
 
 [node name="Hull" type="MeshInstance" parent="Spatial"]
-transform = Transform( 1, -1.94282e-016, 0, -1.94282e-016, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform = Transform( 1, -1.94282e-16, 0, -1.94282e-16, 1, 0, 0, 0, 1, 0, 0, 0 )
 material_override = ExtResource( 3 )
 mesh = ExtResource( 4 )
 material/0 = null
@@ -163,40 +187,40 @@ material/1 = null
 material/2 = null
 
 [node name="hardpoint3" type="Position3D" parent="Spatial/Hull"]
-transform = Transform( 1, -1.94281e-016, 0, -1.94281e-016, 1, 0, 0, 0, 1, 0.309288, -6.00889e-017, 0 )
+transform = Transform( 1, -1.94281e-16, 0, -1.94281e-16, 1, 0, 0, 0, 1, 0.309288, -6.00889e-17, 0 )
 
 [node name="Wing1" type="MeshInstance" parent="Spatial"]
-transform = Transform( -4.37114e-008, 1, 0, -1, -4.37114e-008, 0, 0, 0, 1, -4.85704e-018, 0.025, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.85704e-18, 0.025, 0 )
 material_override = ExtResource( 3 )
 mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="hardpoint1" type="Position3D" parent="Spatial/Wing1"]
-transform = Transform( 1, -1.94281e-016, 0, -1.94281e-016, 1, 0, 0, 0, 1, 1.33016e-009, 0.138651, 0.0632902 )
+transform = Transform( 1, -1.94281e-16, 0, -1.94281e-16, 1, 0, 0, 0, 1, 1.33016e-09, 0.138651, 0.0632902 )
 
 [node name="Wing2" type="MeshInstance" parent="Spatial"]
-transform = Transform( -4.37114e-008, -1, 0, 1, -4.37114e-008, 0, 0, 0, 1, 4.85704e-018, -0.025, 0 )
+transform = Transform( 1, -5.78308e-08, 1.55914e-08, 5.78308e-08, 1, -1.13461e-08, -1.55914e-08, 1.13461e-08, 1, 4.85704e-18, -0.025, 0 )
 material_override = ExtResource( 3 )
 mesh = ExtResource( 6 )
 material/0 = null
 
 [node name="hardpoint2" type="Position3D" parent="Spatial/Wing2"]
-transform = Transform( 1, 5.78308e-008, -1.55914e-008, -5.78308e-008, 1, 1.13462e-008, 1.55914e-008, -1.13462e-008, 1, 0.000270504, -0.139631, 0.0633104 )
+transform = Transform( 1, 5.78308e-08, -1.55914e-08, -5.78308e-08, 1, 1.13462e-08, 1.55914e-08, -1.13462e-08, 1, 0.000270504, -0.139631, 0.0633104 )
 
 [node name="LandingGear" type="MeshInstance" parent="Spatial"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 0.207495, -0.00519639, 0.0195119 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.207495, -0.00519639, 0.0195119 )
 material_override = ExtResource( 3 )
 mesh = ExtResource( 7 )
 material/0 = null
 
 [node name="LandingPadMajor" type="MeshInstance" parent="Spatial"]
-transform = Transform( 1, -1.94282e-016, 0, -1.94282e-016, 1, 0, 0, 0, 1, 0, 0.03, 0 )
+transform = Transform( 1, -1.94282e-16, 0, -1.94282e-16, 1, 0, 0, 0, 1, 0, 0.03, 0 )
 material_override = ExtResource( 3 )
 mesh = ExtResource( 8 )
 material/0 = null
 
 [node name="LandingPadMinor" type="MeshInstance" parent="Spatial"]
-transform = Transform( 1, -1.94282e-016, 0, -1.94282e-016, 1, 0, 0, 0, 1, 0.207, -0.0117123, -0.0225571 )
+transform = Transform( 1, -1.94282e-16, 0, -1.94282e-16, 1, 0, 0, 0, 1, 0.207, -0.0117123, -0.0225571 )
 material_override = ExtResource( 3 )
 mesh = ExtResource( 9 )
 material/0 = null
@@ -207,6 +231,5 @@ anims/Idle = ExtResource( 10 )
 anims/Landing = SubResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( -4.37114e-008, -1.94282e-016, 1, 0, 1, -4.46436e-015, -1, 0, -4.37114e-008, 0.01, -1.94282e-018, 0 )
+transform = Transform( -1.62921e-07, 1, -1.62921e-07, 0, -1.62921e-07, -1, -1, -1.62921e-07, 2.65431e-14, 0.01, -1.94282e-18, 0 )
 shape = SubResource( 3 )
-
