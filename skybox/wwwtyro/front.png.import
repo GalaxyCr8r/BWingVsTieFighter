@@ -4,16 +4,15 @@ importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/front.png-041046055fe8b74af9837ac7a708527c.s3tc.stex"
 path.etc2="res://.import/front.png-041046055fe8b74af9837ac7a708527c.etc2.stex"
-path.etc="res://.import/front.png-041046055fe8b74af9837ac7a708527c.etc.stex"
 metadata={
-"imported_formats": [ "s3tc", "etc2", "etc" ],
+"imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://skybox/wwwtyro/front.png"
-dest_files=[ "res://.import/front.png-041046055fe8b74af9837ac7a708527c.s3tc.stex", "res://.import/front.png-041046055fe8b74af9837ac7a708527c.etc2.stex", "res://.import/front.png-041046055fe8b74af9837ac7a708527c.etc.stex" ]
+dest_files=[ "res://.import/front.png-041046055fe8b74af9837ac7a708527c.s3tc.stex", "res://.import/front.png-041046055fe8b74af9837ac7a708527c.etc2.stex" ]
 
 [params]
 

@@ -4,16 +4,15 @@ importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/Front_2K_TEX.png-fbc27aea3f6b91028a35b8c6ffaa3f5b.s3tc.stex"
 path.etc2="res://.import/Front_2K_TEX.png-fbc27aea3f6b91028a35b8c6ffaa3f5b.etc2.stex"
-path.etc="res://.import/Front_2K_TEX.png-fbc27aea3f6b91028a35b8c6ffaa3f5b.etc.stex"
 metadata={
-"imported_formats": [ "s3tc", "etc2", "etc" ],
+"imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://skybox/pink/Front_2K_TEX.png"
-dest_files=[ "res://.import/Front_2K_TEX.png-fbc27aea3f6b91028a35b8c6ffaa3f5b.s3tc.stex", "res://.import/Front_2K_TEX.png-fbc27aea3f6b91028a35b8c6ffaa3f5b.etc2.stex", "res://.import/Front_2K_TEX.png-fbc27aea3f6b91028a35b8c6ffaa3f5b.etc.stex" ]
+dest_files=[ "res://.import/Front_2K_TEX.png-fbc27aea3f6b91028a35b8c6ffaa3f5b.s3tc.stex", "res://.import/Front_2K_TEX.png-fbc27aea3f6b91028a35b8c6ffaa3f5b.etc2.stex" ]
 
 [params]
 

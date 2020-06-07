@@ -5,7 +5,7 @@ class_name ImpLaser
 #signal value_changed(new_value)
 
 ## Exported vars
-export var speed : float = 250
+export var speed : float = 450
 export var lifetime : float = 10
 
 ## Internal Vars

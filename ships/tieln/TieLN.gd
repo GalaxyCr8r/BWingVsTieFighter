@@ -42,7 +42,7 @@ func _ready():
 func fire_all():
 	for hardPointPath in hardPoints:
 		var hardPoint : Position3D = get_node(hardPointPath)
-		var laser : RebelLaser = packedLaser.instance()
+		var laser = packedLaser.instance()
 		get_parent().add_child(laser)
 		laser.transform.origin = hardPoint.global_transform.origin
 		laser.transform.basis = self.transform.basis
