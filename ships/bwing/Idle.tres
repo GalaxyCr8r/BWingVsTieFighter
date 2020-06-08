@@ -12,7 +12,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector3( 6.50087e-007, 8.93324e-007, 3.31346e-006 ) ]
+"values": [ Vector3( 0, 0, 90 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Spatial/Wing1:rotation_degrees")
@@ -24,7 +24,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector3( 0, 0, 0 ) ]
+"values": [ Vector3( 0, 0, -90 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Spatial/LandingGear:rotation_degrees")
@@ -62,4 +62,39 @@ tracks/4/keys = {
 "update": 0,
 "values": [ Vector3( 0, 0.03, 0 ) ]
 }
-
+tracks/5/type = "value"
+tracks/5/path = NodePath("CollisionShape:translation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0.01, -1.94282e-18, 0 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("CollisionShape:rotation_degrees")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( -1.11315e-14, 90, 0 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Spatial:rotation_degrees")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
